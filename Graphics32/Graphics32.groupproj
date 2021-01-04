@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{8EA88280-F828-4E47-B4F1-47C197BB53A0}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Packages\Smart.Graphics32.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Packages\Smart.Graphics32.Design.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Smart_Graphics32">
+        <MSBuild Projects="Packages\Smart.Graphics32.dproj"/>
+    </Target>
+    <Target Name="Smart_Graphics32:Clean">
+        <MSBuild Projects="Packages\Smart.Graphics32.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Smart_Graphics32:Make">
+        <MSBuild Projects="Packages\Smart.Graphics32.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Smart_Graphics32_Design">
+        <MSBuild Projects="Packages\Smart.Graphics32.Design.dproj"/>
+    </Target>
+    <Target Name="Smart_Graphics32_Design:Clean">
+        <MSBuild Projects="Packages\Smart.Graphics32.Design.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Smart_Graphics32_Design:Make">
+        <MSBuild Projects="Packages\Smart.Graphics32.Design.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Smart_Graphics32;Smart_Graphics32_Design"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Smart_Graphics32:Clean;Smart_Graphics32_Design:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Smart_Graphics32:Make;Smart_Graphics32_Design:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
